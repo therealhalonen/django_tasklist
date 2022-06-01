@@ -10,13 +10,14 @@
 <p><b>Tasks available:</b></p><br>
 {% for job in object_list %}
 {% if not job.accepted and not job.done %}
-<p>
-	Priority: <b>{{ job.priority }}</b> - 
-	Case: <a href="{{ job.get_absolute_url }}">{{ job.customer_name }}</a>
-<p>
-	<a href="{{ job.get_absolute_url }}/delete">Delete</a>
-	{% endif %}
-</p>
+	<p>
+		Priority: <b>{{ job.priority }}</b> - 
+		Case: <a href="{{ job.get_absolute_url }}">{{ job.customer_name }}</a>
+	</p>
+	<p>
+		<a href="{{ job.get_absolute_url }}/delete">Delete</a>
+	</p>
+{% endif %}
 {% endfor %}
 <hr>
 
@@ -30,7 +31,7 @@
 </p>
 {% endfor %}
 <hr>
-<p><b>Tasks done:</b><p>
+<p><b>Tasks done:</b></p>
 {% for job in object_list %}
 {% if job.done %}
 	Case: <a href="{{ job.get_absolute_url }}">{{ job.customer_name }}</a>
