@@ -29,10 +29,10 @@ class Job(models.Model):
     def get_absolute_url(self):
 	    return f"/{self.pk}"
 
-@receiver(pre_save, sender=User)
-def set_new_user_inactive(sender, instance, **kwargs):
-    if instance._state.adding is True:
-        print("Creating Inactive User")
-        instance.is_active = False
-    else:
-        print("Updating User Record")
+#@receiver(pre_save, sender=User)
+#def set_new_user_inactive(sender, instance, **kwargs):
+#    if instance._state.adding is True:
+#        print("Creating Inactive User")
+#        instance.is_active = False
+#    else:
+#        print("Updating User Record")
