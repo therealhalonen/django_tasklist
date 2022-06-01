@@ -1,0 +1,8 @@
+{% extends "job/base.html" %}
+{% block content %}
+<form method=post>
+	{% csrf_token %}
+	<p><b>Are you sure you want to delete an assignment to <i>{{ job.customer_name }}?</i></b></p>
+	<input type=submit value="Delete">
+</form>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends "job/base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p> Hi, <i><b>{{ user.username }}</b></i>!</p>
+<br>
+<h1> Tasklist App </h1>
+<hr>
+
+<p><b>Tasks available:</b></p><br>
+{% for job in object_list %}
+{% if not job.accepted and not job.done %}
+<p>
+	Priority: <b>{{ job.priority }}</b> - 
+	Case: <a href="{{ job.get_absolute_url }}">{{ job.customer_name }}</a>
+<p>
+	<a href="{{ job.get_absolute_url }}/delete">Delete</a>
+	{% endif %}
+</p>
+{% endfor %}
+<hr>
+
+<p><b>Tasks accepted:</b></p><br>
+{% for job in object_list %}
+<p>
+	{% if job.accepted and not job.done %}
+	Case: <a href="{{ job.get_absolute_url }}">{{ job.customer_name }}</a>
+	Accepted by: <b>{{ job.accepted_by }}</b>	
+	{% endif %}
+</p>
+{% endfor %}
+<hr>
+<p><b>Tasks done:</b><p>
+{% for job in object_list %}
+{% if job.done %}
+	Case: <a href="{{ job.get_absolute_url }}">{{ job.customer_name }}</a>
+	Done by: <b>{{ job.accepted_by }}</b>
+{% endif %}
+{% endfor %}
+<hr>
+<p>
+	<a href="{{ job.get_absolute_url }}/new">Add a new task</a><br>
+	<br>
+	<br>
+	<a href="logout">Log Out</a>
+</p>
+{% else %}
+<h1> Tasklist App </h1>
+<hr>
+<p> 
+	Hi, to use this you need an user account.<br>
+	If you already have one, please <a href="login">log In</a><br>
+	<br>
+	If you dont have an user account, please <a href="register">register</a><br> 
+	and wait for acceptance from <b>admin</b>. 
+</p>
+<hr>
+<p>
+	Made using Django-Python Framework 3.2, 2022.<br>
+	See sources at <a href=https://github.com/therealhalonen/django_tasklist>Github.com</a><br>
+	- Antti Halonen.
+<p>
+
+{% endif %}
+{% endblock content %}
+{% block button %}
+{% endblock button %}

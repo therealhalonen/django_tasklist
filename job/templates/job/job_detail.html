@@ -1,0 +1,24 @@
+{% extends "job/base.html" %}
+{% block content %}
+<h1> Task to do </h1>
+<hr>
+<p>
+	<b>Customer:</b><br> 
+	{{ job.customer_name}}<br>
+	<br>
+	<b>Street Address:</b><br> <a href="https://nominatim.openstreetmap.org/ui/search.html?q={{ job.street_address }}">{{ job.street_address }}</a><br>
+	<br>
+	<b>City:</b><br>
+	 {{ job.city }}<br>
+	<br>
+	<b>Supplies Needed:</b><br>
+	 {{ job.supplies_needed }}<br>
+	<br>
+	<b>Accepted:</b><br>
+	 {{ job.accepted }}<br>
+	<br>
+	<b>Task Description:</b><br>
+	{{ job.free_field }}<br><br>
+</p>
+<a href="{{ job.get_absolute_url }}/update">Edit</a><br>
+{% endblock content %}

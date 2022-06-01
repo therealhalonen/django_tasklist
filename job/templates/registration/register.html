@@ -1,0 +1,10 @@
+{% extends "job/base.html" %}
+{% block content %}
+<h1>Register:</h1>
+<hr>
+<form method=post>
+	{% csrf_token %}
+	{{ form.as_table }}
+	<input type=submit value="Register">
+</form>
+{% endblock content %}
