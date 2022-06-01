@@ -39,21 +39,32 @@ SECRET_KEY = 'YOUR KEY HERE'
 ```
 Browse back to the project folder that has manage.py
 ```console
+$ ./manage.py migrate
+$ ./manage.py createsuperuser
+# give your details
 $ ./manage.py runserver
 ```
 Go to http://127.0.0.1:8000/ with your browser. Firefox preferred.
 
 Profit!
 
-## Notes:
-*Users are registered as inactives and marked active from admin panel.*
-To create a superuser, please use official guide: [Django Project, createsuperuser.](https://docs.djangoproject.com/en/4.0/ref/django-admin/#django-admin-createsuperuser)
+## Optional feature:
+*If you want to have new users to be registered as inactives, and activate them through admin panel,
+do the following AFTER YOU HAVE AN ADMIN USER READY*
 
-The feature may be turned off from `models.py` by commenting all lines after:
-```python
-#new user is create as inactive
+```console
+micro job/models.py
 ```
-But remember, after that anyone can register,delete, update and add content! Admin panel stays restricted to admin only.
+Uncomment all:
+```python
+#@receiver(pre_save, sender=User)
+#def set_new_user_inactive(sender, instance, **kwargs):
+#    if instance._state.adding is True:
+#        print("Creating Inactive User")
+#        instance.is_active = False
+#    else:
+#        print("Updating User Record")
+```
 
 ## Screenshots:
 
