@@ -58,15 +58,19 @@ But remember, after that anyone can register,delete, update and add content! Adm
 ## Screenshots:
 
 Front:
+
 ![Image](https://github.com/therealhalonen/python_web_service/blob/master/pw6/res/list_view.png)
 
 Delete:
+
 ![Image](https://github.com/therealhalonen/python_web_service/blob/master/pw6/res/delete_view.png)
 
 Detailed:
+
 ![Image](https://github.com/therealhalonen/python_web_service/blob/master/pw6/res/detail_view.png)
 
 Create:
+
 ![Image](https://github.com/therealhalonen/python_web_service/blob/master/pw6/res/create_view.png)
 
 
